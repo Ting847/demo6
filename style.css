@@ -1,0 +1,87 @@
+body{
+    margin: 0;
+    padding: 0px;
+    font-family: sans-serif;
+   /* overflow: hidden;*/
+}
+.toggle{
+    min-width: 40px;/**/
+    height: 40px;
+    background-color: #262626;
+    border: 1px solid #fff;
+    position: fixed;/**/
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.5s;
+    z-index: 10;/**/
+    padding: 0 20px;
+}
+.toggle:before{  
+    content: 'Menu';
+    color: #fff;
+    line-height: 40px;
+}
+/*active*/
+.toggle.active:before{/*優先*/
+    content: 'Close';
+    color: #fff;
+    line-height: 40px;
+}
+.sidebar{
+    position: fixed;/**/
+    top: 0;
+    left: -100%;/*左移*/
+    width: 100%;
+    height: 100vh;
+    background-color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+/*active*/
+.sidebar.active{/*優先*/
+    left:0;
+}
+ul{
+    position: relative;/*absolute定位*/
+}
+ul li{
+    list-style: none;
+    text-align: center;
+}
+ul li a{
+    display: block;/*Set padding*/
+    text-decoration: none;
+    padding: 5px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+ul li:hover a{
+    color: #ffeb3b;
+}
+ul li a::before{
+    content: attr(data-text);
+    color: #fff;
+    position: absolute;/*定位於上層relative ul*/
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.5s;
+    font-size: 6em;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;/**/
+    font-family: initial;/* default*/
+}
+ul li a:hover::before{
+   opacity: 0.2;
+   top: 50%;
+}
